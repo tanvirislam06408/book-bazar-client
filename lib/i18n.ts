@@ -1,0 +1,430 @@
+import { createContext, useContext } from "react";
+
+export type Language = "en" | "bn";
+
+export const translations = {
+  en: {
+    meta: {
+      title: "BoiBazar - Student Used Book Marketplace in Bangladesh",
+      description: "Buy and sell used textbooks, admission guides, BCS preparation books, and novels directly with fellow students across Bangladesh. 100% Free.",
+    },
+    nav: {
+      brand: "BoiBazar",
+      tagline: "Student Book Classifieds",
+      browse: "Browse Books",
+      howItWorks: "How It Works",
+      safety: "Safety Tips",
+      faq: "FAQ",
+      login: "Log In",
+      sellCta: "Sell a Book",
+      langSwitch: "বাংলা",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+    },
+    hero: {
+      badge: "🇧🇩 Free Classifieds for Bangladeshi Students",
+      titleStart: "Buy & Sell Used Books Directly From ",
+      titleHighlight: "Fellow Students",
+      subtitle: "Save up to 70% on academic textbooks, admission guides, and novels across Bangladesh. No commission, 100% free.",
+      searchPlaceholder: "Book name, author, subject, or ISBN...",
+      allCategories: "All Categories",
+      allDistricts: "All Districts",
+      findBtn: "Find a Book",
+      sellBtn: "Sell Your Old Book",
+      trustBadge: "Free to use. No commission. Direct WhatsApp/Call deal.",
+      popularSearches: "Popular:",
+      popularTags: ["HSC Physics", "Medical Guide", "BCS MP3", "Calculus", "IBA Math"],
+    },
+    categories: {
+      title: "Browse by Category",
+      subtitle: "Find exactly what you need for your syllabus and competitive exams",
+      items: [
+        { id: "ssc-hsc", name: "SSC & HSC", desc: "Textbooks, guides & test papers" },
+        { id: "admission", name: "Admission Prep", desc: "Medical, BUET, DU & Varsity" },
+        { id: "bcs-job", name: "BCS & Job Prep", desc: "MP3, Professors, Bank job guides" },
+        { id: "university", name: "University Books", desc: "Engineering, BBA, Law & Medical" },
+        { id: "novels", name: "Novels & Fiction", desc: "Classic & contemporary literature" },
+        { id: "islamic", name: "Islamic Books", desc: "Quran, Hadith & thoughtful reads" },
+        { id: "kids", name: "Kids & School", desc: "Children story books & elementary" },
+        { id: "others", name: "Others & Non-fiction", desc: "Self-help, history, biographies" },
+      ],
+    },
+    listings: {
+      badge: "Freshly Listed",
+      title: "Latest Books for Sale",
+      subtitle: "Verified student listings available for immediate pickup or meetup",
+      viewAll: "View all books",
+      conditionLabel: "Condition",
+      originalPrice: "MRP",
+      askingPrice: "Price",
+      saveBadge: "SAVE",
+      contactWhatsApp: "WhatsApp",
+      contactCall: "Call Seller",
+      directDeal: "Cash on Meetup",
+    },
+    howItWorks: {
+      badge: "Simple 3-Step Process",
+      title: "How BoiBazar Works",
+      subtitle: "No online payment gateway hassles. Connect directly with students near you.",
+      tabBuyers: "For Buyers",
+      tabSellers: "For Sellers",
+      buyers: [
+        {
+          step: "01",
+          title: "Search for the Book",
+          desc: "Filter by subject, edition, and your district/campus to find listings near you.",
+        },
+        {
+          step: "02",
+          title: "Contact Seller Directly",
+          desc: "Click to reach the student seller via WhatsApp or direct phone call to check condition.",
+        },
+        {
+          step: "03",
+          title: "Meet & Pay Cash",
+          desc: "Meet in a public spot (campus canteen, library, tea stall), inspect the book, and pay cash.",
+        },
+      ],
+      sellers: [
+        {
+          step: "01",
+          title: "Post in 2 Minutes",
+          desc: "Take 1-2 photos of your book, set your fair price, and enter your campus/district location.",
+        },
+        {
+          step: "02",
+          title: "Get Buyer Inquiries",
+          desc: "Receive calls and WhatsApp messages directly from students who need your textbook.",
+        },
+        {
+          step: "03",
+          title: "Meet & Earn Money",
+          desc: "Hand over the book on campus, get cash instantly, and mark your listing as sold.",
+        },
+      ],
+    },
+    whyUs: {
+      badge: "Why Choose Us",
+      title: "Built Specifically for Bangladeshi Students",
+      subtitle: "Solving high book costs and textbook waste with local campus classifieds.",
+      cards: [
+        {
+          title: "Save Up to 70% vs New",
+          desc: "Stop spending thousands on books you only need for one semester. Get pre-loved books in solid condition.",
+        },
+        {
+          title: "Find Books Near You",
+          desc: "Find classmates or campus seniors right in your university or local neighborhood. No courier delay.",
+        },
+        {
+          title: "100% Free & Zero Fees",
+          desc: "No listing fee, no middlemen, and zero commission taken from students. What you earn is all yours.",
+        },
+        {
+          title: "Tailored for BD Curriculums",
+          desc: "Strictly indexed for NCTB, Medical Admission, BUET Engineering, DU IBA, and BCS preparation books.",
+        },
+      ],
+    },
+    safety: {
+      badge: "Community Safety",
+      title: "Safe Trading Guidelines",
+      subtitle: "Follow these simple rules for a secure and smooth book exchange",
+      tips: [
+        {
+          title: "Never Pay in Advance",
+          desc: "Do NOT send bKash, Nagad, or bank transfers before physically receiving and verifying the book.",
+        },
+        {
+          title: "Meet in a Safe Public Spot",
+          desc: "Always meet in daylight at a campus cafeteria, university library, TSC, or well-lit public area.",
+        },
+        {
+          title: "Inspect Pages & Edition",
+          desc: "Check for missing pages, heavy pen markings, and confirm the edition syllabus matches your needs.",
+        },
+        {
+          title: "Report Suspicious Listings",
+          desc: "If someone asks for advance delivery charge or acts suspicious, report them immediately to protect peers.",
+        },
+      ],
+    },
+    seasonal: {
+      badge: "Seasonal Special",
+      title: "🎓 Admission Season 2026 is Live!",
+      desc: "Medical, Engineering, and Varsity admission exams are around the corner. Get question banks, coaching lecture sheets, and concept books from successful seniors at half price.",
+      cta: "Explore Admission Books",
+      urgency: "High demand right now in Dhaka, Chattogram & Rajshahi",
+    },
+    finalCta: {
+      title: "Have Old Books Lying Around? Turn Them into Cash.",
+      subtitle: "Declutter your study desk and help a junior student afford their education. Listing a book takes less than 2 minutes.",
+      button: "Post a Free Ad Now",
+      subtext: "No account required for browsing • Fast & free listing",
+    },
+    faq: {
+      badge: "Got Questions?",
+      title: "Frequently Asked Questions",
+      subtitle: "Everything you need to know about buying and selling on BoiBazar",
+      items: [
+        {
+          q: "Is BoiBazar really 100% free to use?",
+          a: "Yes! BoiBazar is a free community platform created for students. There are no fees to post a book, browse ads, or connect with sellers. We do not charge any commission.",
+        },
+        {
+          q: "How do I contact a seller?",
+          a: "Each book listing includes the seller's verified contact options (WhatsApp button and Direct Phone Call). You can tap either to discuss the book condition and arrange a meetup.",
+        },
+        {
+          q: "Is payment handled on the website?",
+          a: "No. BoiBazar is a classifieds directory, not an e-commerce store with an escrow gateway. Buyers and sellers meet in person on campus or local spots and settle in cash directly.",
+        },
+        {
+          q: "How long does a book listing stay live?",
+          a: "Listings remain active for 30 days or until the seller marks them as 'Sold'. Sellers can delete or refresh their post anytime from their dashboard.",
+        },
+        {
+          q: "How do I report a scam or inappropriate listing?",
+          a: "Click the 'Report Listing' button on any book card, or reach out to our moderation team via the Safety page. We remove fraudulent posts and ban spam numbers immediately.",
+        },
+      ],
+    },
+    footer: {
+      aboutTitle: "About BoiBazar",
+      aboutText: "BoiBazar is a peer-to-peer used book classifieds platform for students across Bangladesh. Connecting book lovers and exam candidates for affordable education.",
+      quickLinks: "Quick Links",
+      categoriesTitle: "Top Categories",
+      safetyTitle: "Trust & Support",
+      policyNote: "⚠️ Notice: BoiBazar is strictly for buying and selling physical printed books in Bangladesh. Sharing or selling pirated digital PDFs, photocopied copyright infringements, or prohibited literature is strictly banned.",
+      rights: "All rights reserved. Made with ❤️ for Bangladeshi students.",
+      links: [
+        { label: "About Us", href: "#about" },
+        { label: "Terms of Service", href: "#terms" },
+        { label: "Privacy Policy", href: "#privacy" },
+        { label: "Safety Guidelines", href: "#safety" },
+        { label: "Contact Us", href: "#contact" },
+      ],
+    },
+  },
+  bn: {
+    meta: {
+      title: "বইবাজার - বাংলাদেশি শিক্ষার্থীদের ব্যবহৃত বইয়ের হাট",
+      description: "সারাদেশের সহপাঠীদের সাথে সেকেন্ড হ্যান্ড পাঠ্যবই, ভর্তি গাইড, বিসিএস প্রস্তুতি এবং উপন্যাসের সরাসরি কেনাবেচা। ১০০% সম্পূর্ণ ফ্রি।",
+    },
+    nav: {
+      brand: "বইবাজার",
+      tagline: "শিক্ষার্থীদের বই ক্লাসিফায়েডস",
+      browse: "বই খুঁজুন",
+      howItWorks: "কীভাবে কাজ করে",
+      safety: "নিরাপত্তা টিপস",
+      faq: "সাধারণ জিজ্ঞাসা",
+      login: "লগইন",
+      sellCta: "বই বিক্রি করুন",
+      langSwitch: "English",
+      menuOpen: "মেনু খুলুন",
+      menuClose: "মেনু বন্ধ করুন",
+    },
+    hero: {
+      badge: "🇧🇩 বাংলাদেশি শিক্ষার্থীদের জন্য সম্পূর্ণ ফ্রি প্ল্যাটফর্ম",
+      titleStart: "সহপাঠীদের কাছ থেকে সেকেন্ড হ্যান্ড বই কেনাবেচা করুন ",
+      titleHighlight: "সহজে ও নিরাপদে",
+      subtitle: "সারাদেশে একাডেমিক বই, ভর্তি গাইড ও উপন্যাসে বাঁচান ৭০% পর্যন্ত টাকা। কোনো দালাল নেই, কোনো কমিশন নেই—১০০% ফ্রি।",
+      searchPlaceholder: "বইয়ের নাম, লেখক, বিষয় বা আইএসবিএন...",
+      allCategories: "সকল ক্যাটাগরি",
+      allDistricts: "সকল জেলা",
+      findBtn: "বই খুঁজুন",
+      sellBtn: "পুরাতন বই বিক্রি করুন",
+      trustBadge: "ব্যবহার করা সম্পূর্ণ ফ্রি। কোনো কমিশন নেই। সরাসরি হোয়াটসঅ্যাপ বা কলে ডিল।",
+      popularSearches: "জনপ্রিয় সার্চ:",
+      popularTags: ["এইচএসসি পদার্থ", "মেডিকেল গাইড", "বিসিএস এমপিথ্রি", "ক্যালকুলাস", "আইবিএ ম্যাথ"],
+    },
+    categories: {
+      title: "ক্যাটাগরি অনুযায়ী বই খুঁজুন",
+      subtitle: "আপনার সিলেবাস এবং প্রতিযোগিতামূলক পরীক্ষার প্রয়োজনীয় বই সহজে বেছে নিন",
+      items: [
+        { id: "ssc-hsc", name: "এসএসসি ও এইচএসসি", desc: "টেক্সটবুক, গাইড ও টেস্ট পেপার" },
+        { id: "admission", name: "ভর্তি প্রস্তুতি", desc: "মেডিকেল, বুয়েট, ঢাবি ও ভার্সিটি" },
+        { id: "bcs-job", name: "বিসিএস ও চাকরি", desc: "এমপিথ্রি, প্রফেসরস, ব্যাংক জব গাইড" },
+        { id: "university", name: "ভার্সিটি টেক্সটবুক", desc: "ইঞ্জিনিয়ারিং, বিবিএ, আইন ও মেডিকেল" },
+        { id: "novels", name: "উপন্যাস ও সাহিত্য", desc: "ক্লাসিক গল্প, উপন্যাস ও কবিতা" },
+        { id: "islamic", name: "ইসলামিক বই", desc: "কোরআন, হাদিস ও মননশীল সাহিত্য" },
+        { id: "kids", name: "শিশু ও স্কুল বই", desc: "ছোটদের গল্পের বই ও প্রাথমিক শিক্ষা" },
+        { id: "others", name: "অন্যান্য ও নন-ফিকশন", desc: "আত্মউন্নয়ন, ইতিহাস ও জীবনী" },
+      ],
+    },
+    listings: {
+      badge: "সদ্য যুক্ত হওয়া বই",
+      title: "বিক্রির জন্য সেরা বইগুলো",
+      subtitle: "শিক্ষার্থীদের দেওয়া সরাসরি বিজ্ঞাপন, দেখা করে নেওয়ার সুযোগ",
+      viewAll: "সব বই দেখুন",
+      conditionLabel: "অবস্থা",
+      originalPrice: "গায়ের দাম",
+      askingPrice: "বিক্রয় মূল্য",
+      saveBadge: "সাশ্রয়",
+      contactWhatsApp: "হোয়াটসঅ্যাপ",
+      contactCall: "কল করুন",
+      directDeal: "দেখা করে ক্যাশ পেমেন্ট",
+    },
+    howItWorks: {
+      badge: "সহজ ৩ ধাপের প্রক্রিয়া",
+      title: "বইবাজার যেভাবে কাজ করে",
+      subtitle: "কোনো জটিল পেমেন্ট গেটওয়ে ঝামেলা নেই। ক্যাম্পাসে বা এলাকার সহপাঠীদের সাথে সরাসরি লেনদেন।",
+      tabBuyers: "ক্রেতাদের জন্য",
+      tabSellers: "বিক্রেতাদের জন্য",
+      buyers: [
+        {
+          step: "০১",
+          title: "প্রয়োজনীয় বইটি খুঁজুন",
+          desc: "বিষয়, সংস্করণ ও আপনার জেলা/ক্যাম্পাস ফিল্টার করে কাছের বইয়ের বিজ্ঞাপন দেখুন।",
+        },
+        {
+          step: "০২",
+          title: "বিক্রেতার সাথে যোগাযোগ",
+          desc: "সরাসরি হোয়াটসঅ্যাপ বা কল বাটনে চাপ দিয়ে বিক্রেতার সাথে বইয়ের অবস্থা ও দাম যাচাই করুন।",
+        },
+        {
+          step: "০৩",
+          title: "দেখা করুন ও ক্যাশ দিন",
+          desc: "ক্যাম্পাসের ক্যাফেটেরিয়া বা পরিচিত পাবলিক স্থানে দেখা করে বই হাতে নিয়ে মূল্য পরিশোধ করুন।",
+        },
+      ],
+      sellers: [
+        {
+          step: "০১",
+          title: "২ মিনিটে পোস্ট দিন",
+          desc: "বইয়ের ১-২টি স্পষ্ট ছবি তুলুন, উপযুক্ত দাম দিন এবং আপনার জেলা ও ক্যাম্পাস এলাকা উল্লেখ করুন।",
+        },
+        {
+          step: "০২",
+          title: "সরাসরি সাড়া পান",
+          desc: "যেসব শিক্ষার্থীর বইটি প্রয়োজন তারা সরাসরি আপনার হোয়াটসঅ্যাপে মেসেজ বা ফোন দিবে।",
+        },
+        {
+          step: "০৩",
+          title: "দেখা করে টাকা নিন",
+          desc: "ক্যাম্পাসে বা সুবিধাজনক জায়গায় দেখা করে বই বুঝিয়ে দিন এবং তাৎক্ষণিক নগদ টাকা গ্রহণ করুন।",
+        },
+      ],
+    },
+    whyUs: {
+      badge: "আমাদের বিশেষত্ব",
+      title: "বাংলাদেশি শিক্ষার্থীদের চাহিদামতো তৈরি",
+      subtitle: "বইয়ের চড়া দাম ও অপচয় রোধে সহপাঠীদের লোকাল ক্লাসিফায়েডস হাব।",
+      cards: [
+        {
+          title: "নতুন বইয়ের চেয়ে ৭০% পর্যন্ত সাশ্রয়",
+          desc: "এক সেমিস্টারের জন্য হাজার টাকা খরচ বন্ধ করুন। অল্প ব্যবহৃত ভালো বই পান একদম সাধ্যের মধ্যে।",
+        },
+        {
+          title: "কাছের সহপাঠী থেকে কিনুন",
+          desc: "নিজের ক্যাম্পাস বা এলাকার সিনিয়র-জুনিয়রদের কাছ থেকেই সংগ্রহ করুন। কুরিয়ারের অপেক্ষা নেই।",
+        },
+        {
+          title: "১০০% সম্পূর্ণ ফ্রি ও জিরো চার্জ",
+          desc: "কোনো লিস্টিং ফি নেই, কোনো দালাল নেই এবং বিক্রির টাকার উপর কোনো কমিশন নেই।",
+        },
+        {
+          title: "দেশীয় সিলেবাসের জন্য উপযোগী",
+          desc: "জাতীয় শিক্ষাক্রম (NCTB), মেডিকেল, বুয়েট, ঢাবি ভর্তি ও বিসিএস গাইডের জন্য বিশেষভাবে সাজানো।",
+        },
+      ],
+    },
+    safety: {
+      badge: "নিরাপত্তা নির্দেশিকা",
+      title: "নিরাপদে বই লেনদেনের নিয়মাবলী",
+      subtitle: "সবার জন্য একটি নিরাপদ প্ল্যাটফর্ম বজায় রাখতে নিচের বিষয়গুলো খেয়াল রাখুন",
+      tips: [
+        {
+          title: "কখনোই অগ্রিম টাকা পাঠাবেন না",
+          desc: "বই সামনাসামনি দেখে হাতে পাওয়ার আগে বিকাশ, নগদ বা ব্যাংকে কোনো অগ্রিম টাকা পাঠাবেন না।",
+        },
+        {
+          title: "জনবহুল ও নিরাপদ স্থানে দেখা করুন",
+          desc: "সবসময় দিনের আলোতে ক্যাম্পাসের ক্যাফেটেরিয়া, লাইব্রেরি, টিএসসি বা পরিচিত জায়গায় দেখা করুন।",
+        },
+        {
+          title: "বইয়ের পাতা ও সংস্করণ দেখে নিন",
+          desc: "কোনো পাতা ছেঁড়া আছে কিনা, বেশি দাগানো কিনা এবং আপনার দরকারি এডিশন কিনা মিলিয়ে নিন।",
+        },
+        {
+          title: "সন্দেহজনক বিজ্ঞাপন রিপোর্ট করুন",
+          desc: "কেউ কুরিয়ার চার্জ বা অগ্রিম টাকা দাবি করলে সাথে সাথে আমাদের রিপোর্ট করে অন্যকে সতর্ক করুন।",
+        },
+      ],
+    },
+    seasonal: {
+      badge: "সিজনাল স্পেশাল",
+      title: "🎓 বিশ্ববিদ্যালয় ও মেডিকেল ভর্তি প্রস্তুতি ২০২৬ শুরু!",
+      desc: "মেডিকেল, ইঞ্জিনিয়ারিং ও ভার্সিটি ভর্তি পরীক্ষা সন্নিকটে। সিনিয়রদের সফল প্রস্ততির প্রশ্নব্যাংক, কনসেপ্ট বুক এবং কোচিং লেকচার শিট সংগ্রহ করুন অর্ধেকেরও কম মূল্যে।",
+      cta: "ভর্তি পরীক্ষার বই দেখুন",
+      urgency: "ঢাকা, চট্টগ্রাম ও রাজশাহীর ক্যাম্পাসে প্রচুর চাহিদা",
+    },
+    finalCta: {
+      title: "পড়ে থাকা পুরাতন বই বিক্রি করে এখনই টাকা আয় করুন",
+      subtitle: "আপনার টেবিলের অযত্নে পড়ে থাকা বই অন্য শিক্ষার্থীর পড়াশোনায় সাহায্য করুক। বিজ্ঞাপন দিতে সময় লাগবে ২ মিনিটেরও কম।",
+      button: "ফ্রি বিজ্ঞাপন দিন",
+      subtext: "বই খুঁজতে কোনো অ্যাকাউন্টের প্রয়োজন নেই • সহজ ও দ্রুত লিস্টিং",
+    },
+    faq: {
+      badge: "সচরাচর প্রশ্ন",
+      title: "সাধারণ জিজ্ঞাসা",
+      subtitle: "বইবাজারে কেনাবেচা সম্পর্কে আপনার প্রয়োজনীয় উত্তরগুলো জেনে নিন",
+      items: [
+        {
+          q: "বইবাজার কি আসলেই সম্পূর্ণ ফ্রি?",
+          a: "হ্যাঁ! বইবাজার শিক্ষার্থীদের জন্য তৈরি একটি উন্মুক্ত কমিউনিটি প্ল্যাটফর্ম। এখানে বইয়ের বিজ্ঞাপন দেওয়া, খোঁজা কিংবা বিক্রেতার সাথে যোগাযোগের জন্য কোনো চার্জ নেওয়া হয় না।",
+        },
+        {
+          q: "বিক্রেতার সাথে আমি কীভাবে যোগাযোগ করব?",
+          a: "প্রতিটি বইয়ের বিজ্ঞাপনেই বিক্রেতার সরাসরি হোয়াটসঅ্যাপ ও কল বাটন দেওয়া রয়েছে। বাটনে ক্লিক করে আপনি সরাসরি কথা বলে নিতে পারবেন।",
+        },
+        {
+          q: "ওয়েবসাইটে কি কোনো পেমেন্ট গেটওয়ে আছে?",
+          a: "না। বইবাজার একটি ক্লাসিফায়েডস ডিরেক্টরি। ক্রেতা ও বিক্রেতা ক্যাম্পাসে বা সুবিধাজনক জায়গায় সরাসরি দেখা করে ক্যাশ টাকার মাধ্যমে লেনদেন সম্পন্ন করেন।",
+        },
+        {
+          q: "আমার দেওয়া বইয়ের বিজ্ঞাপন কতদিন থাকবে?",
+          a: "প্রতিটি বিজ্ঞাপন ৩০ দিন পর্যন্ত কার্যকর থাকে বা বিক্রেতা 'Sold' মার্ক না করা পর্যন্ত প্রদর্শিত হয়। বিক্রেতা যেকোনো সময় বিজ্ঞাপন এডিট বা রিমুভ করতে পারেন।",
+        },
+        {
+          q: "ভুয়া বা প্রতারণামূলক বিজ্ঞাপন কীভাবে রিপোর্ট করব?",
+          a: "বইয়ের কার্ডে থাকা 'Report' অপশনে ক্লিক করে বা সেফটি পেজে অভিযোগ জানালে আমাদের টিম তাৎক্ষণিকভাবে ভুয়া বিজ্ঞাপন ও সংশ্লিষ্ট নম্বর নিষিদ্ধ করে।",
+        },
+      ],
+    },
+    footer: {
+      aboutTitle: "বইবাজার সম্পর্কে",
+      aboutText: "বইবাজার বাংলাদেশের শিক্ষার্থীদের জন্য একটি ওপেন পিয়ার-টু-পিয়ার ব্যবহৃত বইয়ের ক্লাসিফায়েডস প্ল্যাটফর্ম। সাশ্রয়ী শিক্ষায় বইপ্রেমী ও শিক্ষার্থীদের সরাসরি সংযোগ।",
+      quickLinks: "প্রয়োজনীয় লিংক",
+      categoriesTitle: "শীর্ষ ক্যাটাগরি",
+      safetyTitle: "নিরাপত্তা ও সহায়তা",
+      policyNote: "⚠️ সতর্কবার্তা: বইবাজার শুধুমাত্র ফিজিক্যাল মুদ্রিত বই কেনাবেচার জন্য। কোনো ধরনের পাইরেটেড পিডিএফ বা কপিরাইট লঙ্ঘিত সামগ্রী পোস্ট করা সম্পূর্ণ বেআইনি ও নিষিদ্ধ।",
+      rights: "সর্বস্বত্ব সংরক্ষিত। বাংলাদেশের শিক্ষার্থীদের জন্য ভালোবাসায় তৈরি ❤️",
+      links: [
+        { label: "আমাদের সম্পর্কে", href: "#about" },
+        { label: "ব্যবহারের শর্তাবলী", href: "#terms" },
+        { label: "গোপনীয়তা নীতি", href: "#privacy" },
+        { label: "নিরাপত্তা নীতি", href: "#safety" },
+        { label: "যোগাযোগ", href: "#contact" },
+      ],
+    },
+  },
+};
+
+export type Translations = typeof translations.en;
+
+interface LanguageContextType {
+  lang: Language;
+  t: Translations;
+  toggleLang: () => void;
+  setLanguage: (lang: Language) => void;
+}
+
+export const LanguageContext = createContext<LanguageContextType>({
+  lang: "bn",
+  t: translations.bn,
+  toggleLang: () => {},
+  setLanguage: () => {},
+});
+
+export const useLanguage = () => useContext(LanguageContext);
