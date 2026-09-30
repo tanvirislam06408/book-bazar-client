@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 import { BookOpen, Globe, Menu, X, Plus, User, ShieldCheck, Sparkles } from "lucide-react";
 
@@ -79,22 +80,22 @@ export function Navbar() {
             </button>
 
             {/* Login Button */}
-            <button
-              type="button"
+            <Link
+              href="/login"
               className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-slate-700 hover:text-indigo-700 hover:bg-indigo-50/80 rounded-xl transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-600"
             >
               <User className="w-4 h-4 text-slate-500" aria-hidden="true" />
               <span>{t.nav.login}</span>
-            </button>
+            </Link>
 
             {/* Primary CTA (Tactile Duolingo-style Sell Button) */}
-            <a
-              href="#sell"
+            <Link
+              href="/register"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:translate-y-0.5 text-white text-sm font-extrabold shadow-sm border-b-4 border-emerald-800 transition-all duration-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
             >
               <Plus className="w-4 h-4 stroke-[3]" aria-hidden="true" />
               <span>{t.nav.sellCta}</span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu & Lang Button */}
@@ -131,21 +132,21 @@ export function Navbar() {
         <div className="md:hidden border-t border-indigo-100 bg-[#FAFBFD] px-4 pt-3 pb-6 space-y-3 shadow-lg animate-in slide-in-from-top-2 duration-150">
           <nav className="flex flex-col space-y-1 text-base font-bold text-slate-800">
             <a
-              href="#listings"
+              href="/#listings"
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-slate-800 hover:text-indigo-700 transition-colors cursor-pointer"
             >
               {t.nav.browse}
             </a>
             <a
-              href="#how-it-works"
+              href="/#how-it-works"
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-slate-800 hover:text-indigo-700 transition-colors cursor-pointer"
             >
               {t.nav.howItWorks}
             </a>
             <a
-              href="#safety"
+              href="/#safety"
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-slate-800 hover:text-indigo-700 transition-colors cursor-pointer flex items-center gap-2"
             >
@@ -155,21 +156,22 @@ export function Navbar() {
           </nav>
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2.5">
-            <button
-              type="button"
+            <Link
+              href="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-bold hover:bg-slate-50 transition-colors cursor-pointer"
             >
               <User className="w-4 h-4 text-slate-600" aria-hidden="true" />
               {t.nav.login}
-            </button>
-            <a
-              href="#sell"
+            </Link>
+            <Link
+              href="/register"
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold shadow-sm border-b-4 border-emerald-800 transition-colors cursor-pointer"
             >
               <Plus className="w-5 h-5 stroke-[3]" aria-hidden="true" />
               {t.nav.sellCta}
-            </a>
+            </Link>
           </div>
         </div>
       )}
